@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 4:29:36 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="eu.ubitech.broker.hibernate.models.PurchaseOrder" table="purchase_order" catalog="broker">
+        <id name="orderNum" type="int">
+            <column name="order_num" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="product" class="eu.ubitech.broker.hibernate.models.Product" fetch="select">
+            <column name="product_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="customer" class="eu.ubitech.broker.hibernate.models.Customer" fetch="select">
+            <column name="customer_id" not-null="true" />
+        </many-to-one>
+        <property name="quantity" type="java.lang.Short">
+            <column name="quantity" />
+        </property>
+        <property name="shippingCost" type="big_decimal">
+            <column name="shipping_cost" precision="12" />
+        </property>
+        <property name="salesDate" type="date">
+            <column name="sales_date" length="10" />
+        </property>
+        <property name="shippingDate" type="date">
+            <column name="shipping_date" length="10" />
+        </property>
+        <property name="freightCompany" type="string">
+            <column name="freight_company" length="30" />
+        </property>
+    </class>
+</hibernate-mapping>

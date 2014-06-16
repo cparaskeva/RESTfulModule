@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 4:29:36 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="eu.ubitech.broker.hibernate.models.Customer" table="customer" catalog="broker">
+        <id name="customerId" type="int">
+            <column name="customer_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="microMarket" class="eu.ubitech.broker.hibernate.models.MicroMarket" fetch="select">
+            <column name="zip" length="10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="discountCode" class="eu.ubitech.broker.hibernate.models.DiscountCode" fetch="select">
+            <column name="discount_code" length="1" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="30" />
+        </property>
+        <property name="addressline1" type="string">
+            <column name="addressline1" length="30" />
+        </property>
+        <property name="addressline2" type="string">
+            <column name="addressline2" length="30" />
+        </property>
+        <property name="city" type="string">
+            <column name="city" length="25" />
+        </property>
+        <property name="state" type="string">
+            <column name="state" length="2" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="12" />
+        </property>
+        <property name="fax" type="string">
+            <column name="fax" length="12" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="40" />
+        </property>
+        <property name="creditLimit" type="java.lang.Integer">
+            <column name="credit_limit" />
+        </property>
+        <set name="purchaseOrders" table="purchase_order" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="customer_id" not-null="true" />
+            </key>
+            <one-to-many class="eu.ubitech.broker.hibernate.models.PurchaseOrder" />
+        </set>
+    </class>
+</hibernate-mapping>

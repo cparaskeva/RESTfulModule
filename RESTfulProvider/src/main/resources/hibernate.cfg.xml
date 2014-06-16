@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/broker?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">broker</property>
+    <property name="hibernate.connection.password">!broker!</property>
+    <mapping resource="eu/ubitech/broker/hibernate/models/Manufacturer.hbm.xml"/>
+    <mapping resource="eu/ubitech/broker/hibernate/models/ProductCode.hbm.xml"/>
+    <mapping resource="eu/ubitech/broker/hibernate/models/DiscountCode.hbm.xml"/>
+    <mapping resource="eu/ubitech/broker/hibernate/models/PurchaseOrder.hbm.xml"/>
+    <mapping resource="eu/ubitech/broker/hibernate/models/MicroMarket.hbm.xml"/>
+    <mapping resource="eu/ubitech/broker/hibernate/models/Customer.hbm.xml"/>
+    <mapping resource="eu/ubitech/broker/hibernate/models/Product.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

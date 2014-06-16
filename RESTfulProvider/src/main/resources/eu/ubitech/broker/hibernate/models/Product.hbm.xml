@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 4:29:36 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="eu.ubitech.broker.hibernate.models.Product" table="product" catalog="broker">
+        <id name="productId" type="int">
+            <column name="product_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="manufacturer" class="eu.ubitech.broker.hibernate.models.Manufacturer" fetch="select">
+            <column name="manufacturer_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="productCode" class="eu.ubitech.broker.hibernate.models.ProductCode" fetch="select">
+            <column name="product_code" length="2" not-null="true" />
+        </many-to-one>
+        <property name="purchaseCost" type="big_decimal">
+            <column name="purchase_cost" precision="12" />
+        </property>
+        <property name="quantityOnHand" type="java.lang.Integer">
+            <column name="quantity_on_hand" />
+        </property>
+        <property name="markup" type="big_decimal">
+            <column name="markup" precision="4" />
+        </property>
+        <property name="available" type="string">
+            <column name="available" length="5" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="50" />
+        </property>
+        <set name="purchaseOrders" table="purchase_order" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="product_id" not-null="true" />
+            </key>
+            <one-to-many class="eu.ubitech.broker.hibernate.models.PurchaseOrder" />
+        </set>
+    </class>
+</hibernate-mapping>

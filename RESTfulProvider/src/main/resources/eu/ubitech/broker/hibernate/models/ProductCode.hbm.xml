@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 4:29:36 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="eu.ubitech.broker.hibernate.models.ProductCode" table="product_code" catalog="broker">
+        <id name="prodCode" type="string">
+            <column name="prod_code" length="2" />
+            <generator class="assigned" />
+        </id>
+        <property name="discountCode" type="char">
+            <column name="discount_code" length="1" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="10" />
+        </property>
+        <set name="products" table="product" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="product_code" length="2" not-null="true" />
+            </key>
+            <one-to-many class="eu.ubitech.broker.hibernate.models.Product" />
+        </set>
+    </class>
+</hibernate-mapping>
