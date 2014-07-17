@@ -14,5 +14,6 @@
   <modules>
     <module>RESTfulClient</module>
     <module>RESTfulProvider</module>
+    <module>SpringSolrDemo</module>
   </modules>
 </project>
